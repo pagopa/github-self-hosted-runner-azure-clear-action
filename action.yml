@@ -40,6 +40,7 @@ runs:
           AZURE_CONTAINER_APP_NAME="${{ inputs.runner_name }}"
           echo "[INFO] AZURE_CONTAINER_APP_NAME: ${AZURE_CONTAINER_APP_NAME}"
 
+          ### 1) Delete Container App
           az config set extension.use_dynamic_install=yes_without_prompt
 
           az containerapp delete \
@@ -49,6 +50,7 @@ runs:
 
           echo "[INFO] AZURE_CONTAINER_APP_NAME deleted"
 
+          ### 2) Unregister GitHub runner
           sleep 30
 
           # sometimes delete operation needs more time to works,
